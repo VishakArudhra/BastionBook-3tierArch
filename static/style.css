@@ -20,7 +20,27 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content:last-child { margin-bottom: 0; }
 .content form { margin: 1em 0; display: flex; flex-direction: column; }
 .content label { font-weight: bold; margin-bottom: 0.5em}
-.content input, .content textarea { margin-bottom: 1em; width: 300px}
+.content input, .content textarea { margin-bottom: 1em; width: 300px }
 .content textarea { min-height: 12em; resize: vertical}
+.child {
+    display: inline-block;
+    vertical-align: text-top;
+  }
+
+#get_data.child {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 2rem;
+    padding-bottom: 1px;
+
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#get_data.child > table tr th {
+  text-align: left;
+}
+
 input.danger { color: #cc2f2e; }
-input[type=submit] { align-self: start;width: 10em; }
+input[type=submit] { align-self: start; width: 10em; }

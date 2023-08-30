@@ -20,10 +20,23 @@ def hello_world():
 # have to match.
 @app.route("/<name>")
 def hello_name(name):
-    return f"<h1>Hello, {escape(name)}!</h2>"
+    return f"<h1>Hello, {escape(name)}!</h1>"
 
 @app.route("/register", methods=('GET','POST'))
 def register():
+
+    #if request is GET
+    url = 'https://25a55it941.execute-api.us-west-2.amazonaws.com/test/dynamodbmanager'
+
+    get_all_data = {
+    'operation': 'getall'
+    }
+    
+    response_data = requests.post(
+        url,
+        data=json.dumps(get_all_data),
+        headers={'Accept': 'application/json'}
+    )
     if request.method == 'POST':
         try:
             inst_name = request.form['instance_name']
@@ -42,7 +55,6 @@ def register():
             print((inst_name, user, ipaddr, pvt_key))
 
             try:
-                url = 'https://25a55it941.execute-api.us-west-2.amazonaws.com/test/dynamodbmanager'
                 new_entry = {
                     'operation': str(operation),
                     'payload': {
@@ -60,17 +72,18 @@ def register():
                     )
                 assert response.content.decode() == 'null'
                 flash('entry successful')
-                return render_template('register.html', bad_entry=False)
+                return render_template('register.html', bad_entry=False, instance_data=response_data.json())
             except:
                 flash('entry unsuccessful, internal error.')
-                return render_template('register.html', bad_entry=True)
+                return render_template('register.html', bad_entry=True, instance_data=response_data.json())
         
         except:
             flash('entry unsuccessful, try again.')
-            return render_template('register.html', bad_entry=True)
-                
+            return render_template('register.html', bad_entry=True, instance_data=response_data.json())
+         
             
-    return render_template('register.html')
+    return render_template('register.html', instance_data=response_data.json())
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

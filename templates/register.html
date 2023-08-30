@@ -5,24 +5,41 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="instance_name">Instance Name</label>
-    <input name="instance_name" id="instance_name" required>
-    <label for="user">User</label>
-    <input name="user" id="user" required>
-    <label for="ipaddr">IP Address</label>
-    <input name="ipaddr" id="ipaddr" required>
-    <label for="pvt_key">Private Key</label>
-    <input name="pvt_key" id="pvt_key" required>
-    <input type="submit" value="Add">
-  </form>
-  <p1>
-    {% for message in get_flashed_messages() %}
-      {% if bad_entry %}
-      <div style="color:red;">{{ message }}</div>
-      {% else %}
-      <div style="color:green;">{{ message }}</div>
-      {% endif %}
-    {% endfor %}
-  </p1>
+  <div class="child" id="input_data">
+    <form method="post">
+      <label for="instance_name">Instance Name</label>
+      <input name="instance_name" id="instance_name" required>
+      <label for="user">User</label>
+      <input name="user" id="user" required>
+      <label for="ipaddr">IP Address</label>
+      <input name="ipaddr" id="ipaddr" required>
+      <label for="pvt_key">Private Key</label>
+      <input name="pvt_key" id="pvt_key" required>
+      <input type="submit" value="Add">
+    </form>
+    <p1>
+      {% for message in get_flashed_messages() %}
+        {% if bad_entry %}
+        <div style="color:red;">{{ message }}</div>
+        {% else %}
+        <div style="color:green;">{{ message }}</div>
+        {% endif %}
+      {% endfor %}
+    </p1>
+  </div>
+  <div class="child" id="get_data">
+  {% if instance_data %}
+    <table>
+        <tr>
+          <th>instance name</th><td> </td><th>username</th><td> </td><th>ip address</th>
+        </tr>
+        {% for entry in instance_data %}
+          <tr>
+            <td>{{ entry.inst_name }}</td><td> </td><td>{{ entry.username }}</td><td> </td><td>{{ entry.ip_addr }}</td>
+          </tr>
+        {% endfor %}
+    </table>
+  {% endif %}
+  </div>
 {% endblock %}
+
