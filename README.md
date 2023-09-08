@@ -6,7 +6,7 @@ This branch is concerned with the two playbooks written for the setup and the co
 
 ## Setting Up Dynamic Inventory for Playbook Execution
 
-Constant manual rewriting of the inventory file with different sets of IP addresses is neither practical nor efficient at scale, therefore as a solution is **Dyanmic Inventory**. Follow [this](https://devopscube.com/setup-ansible-aws-dynamic-inventory/) site for reference for setup method.
+Constant manual rewriting of the inventory file with different sets of IP addresses is neither practical nor efficient at scale, therefore as a solution is **Dynamic Inventory**. Follow [this](https://devopscube.com/setup-ansible-aws-dynamic-inventory/) site for reference for setup method.
 
 *Before going for the dynamic inventory configuration, ensure your target instances will launch with a particular tag specific for the purpose of ansible targetting* for e.g., `ansible-managed: true`
 
