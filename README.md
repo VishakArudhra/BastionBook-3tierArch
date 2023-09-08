@@ -19,7 +19,7 @@ Constant manual rewriting of the inventory file with different sets of IP addres
     filters:
         tag:ansible-managed: true
     ```
-The path suggested to place your file in, in the hyper-linked walkthrough is: `/opt/ansible/inventory`
+    The path suggested to place your file in, in the hyper-linked walkthrough is: `/opt/ansible/inventory`
 
 2) If you wish so, you can also make this your default inventory by configuring your `ansible.cfg` file in the below manner:
 
