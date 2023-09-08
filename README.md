@@ -21,7 +21,7 @@ Constant manual rewriting of the inventory file with different sets of IP addres
     ```
 The path suggested to place your file in, in the hyper-linked walkthrough is: `/opt/ansible/inventory`
 
-2) If you wish so, you can also make this your default inventory by configurig your `ansible.cfg` file in the below manner:
+2) If you wish so, you can also make this your default inventory by configuring your `ansible.cfg` file in the below manner:
 
     ``` CONF
     [defaults]
@@ -32,7 +32,7 @@ The path suggested to place your file in, in the hyper-linked walkthrough is: `/
     enable_plugins = aws_ec2
     ```
 
-This way the there won't be a need to worry about the number of the instances to target when executing the ansible-playbook.
+This way there won't be a need to worry about the number of the instances to target when executing the ansible-playbook.
 
 For e.g., if you wanted to have your target instances serve the updated application files from the **main** branch, you could just run:
 
