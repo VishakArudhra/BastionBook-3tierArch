@@ -1,0 +1,33 @@
+---
+- name: install nginx
+  apt:
+    name: nginx
+    update_cache: yes
+
+- name: setup bas10book server block
+  template:
+    src: templates/bas10book.conf
+    dest: /etc/nginx/sites-available/bas10book
+    mode: 0644
+
+- name: delete default server config from sites-enabled
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: soft link bas10book into sites-enabled
+  file:
+    src: /etc/nginx/sites-available/bas10book
+    dest: /etc/nginx/sites-enabled/bas10book
+    state: link
+
+- name: change home permissions for nginx
+  file:
+    path: /home/ubuntu
+    mode: 0755
+
+- name: restart nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: true

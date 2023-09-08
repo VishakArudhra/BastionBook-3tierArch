@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve bas10book
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/bas10book
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind unix:bas10book.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target

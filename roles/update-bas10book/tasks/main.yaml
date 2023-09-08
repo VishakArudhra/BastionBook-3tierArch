@@ -1,0 +1,2 @@
+---
+- include_tasks: update_bas10book_service.yaml

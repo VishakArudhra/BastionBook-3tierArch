@@ -1,0 +1,31 @@
+---
+- name: clone bas10book application repo
+  git:
+    repo: https://github.com/VishakArudhra/BastionBook-3tierArch.git
+    dest: /home/ubuntu/bas10book/
+    clone: yes
+    update: yes
+
+
+- name: place bas10book systemd service config
+  copy:
+    src: files/bas10book.service
+    dest: /etc/systemd/system/bas10book.service
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: chown ~/bas10book to ubuntu:www-data
+  file:
+    path: /home/ubuntu/bas10book
+    owner: ubuntu
+    group: www-data
+    recurse: yes
+    mode: 0755
+
+- name: start bas10book service
+  systemd:
+    name: bas10book
+    state: started
+    enabled: true

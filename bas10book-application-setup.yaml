@@ -1,0 +1,7 @@
+---
+- name: configure server with bas10book application
+  hosts: all
+  become: True
+  # gather_facts: False
+  roles:
+    - setup-bas10book

@@ -1,0 +1,4 @@
+---
+- include_tasks: setup_python_dependencies.yaml
+- include_tasks: setup_bas10book_service.yaml
+- include_tasks: setup_nginx.yaml
