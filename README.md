@@ -20,7 +20,7 @@ e.g.,
 2XXX90707XXX - api1.example.com
 ```
 
-Creating all the hosted zones with the same domain name for e.g., `example.com ` might disrupt DNS request routing through to any specific AWS resource hosted at a specific subdomain.
+Creating all the hosted zones with the same domain name for e.g., `example.com` might disrupt DNS request routing through to any specific AWS resource hosted at a specific subdomain.
 
 In this case, no matter how unique are the A records across the different hosted zones, there won't be consistent success in the domain resolution.
 
