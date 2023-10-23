@@ -32,7 +32,7 @@ In this case, no matter how unique are the A records across the different hosted
 
 For setting up custom domain endpoint for the API Gateway, [this](https://wenheqi.medium.com/route-api-gateway-api-to-a-custom-domain-name-using-route53-251bc7f6fe75) was the referred article which contains all the relevant steps in detail to setup a custom domain API gateway endpoint.
 
-### Containerization of the previously of 3-tier Architecture based App
+### Containerization of the previously VM-hosted 3-tier Architecture based App
 
 The earlier application setup isn't much different from the currently containerized setup of the same:
 
