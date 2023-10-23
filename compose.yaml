@@ -1,0 +1,16 @@
+services:
+  frontend:
+    build: bastionbook-frontend
+    restart: always
+    command: gunicorn -w 3 -t 60 -b 0.0.0.0:5000 wsgi:app
+  
+  frontend-load-balancer:
+    build: nginx-load-balancers
+    restart: always
+    volumes:
+      - ./nginx-load-balancers/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+    

@@ -1,3 +1,5 @@
+# originally hosted on lambda function and fronted with an API Gateway as guided in
+# the below user guide: https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway-tutorial.html
 import boto3
 import json
 
