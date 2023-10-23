@@ -37,10 +37,10 @@ For setting up custom domain endpoint for the API Gateway, [this](https://wenheq
 The earlier application setup isn't much different from the currently containerized setup of the same:
 
 1) The application would be served through multiple *gunicorn* processes waiting for requests in a .sock file.
-2) An nginx process would be listening at port 80 forwarding every request to the .sock file, thereby accomplishing the 'load-balancing'.
+2) An nginx process would be listening at port 80 distributing traffic requests to the gunicorn processes through the .sock file, thereby accomplishing the 'load-balancing'.
 3) All these tools though would run as services or daemons.
 
-Let's take a look at the file structure starting from the .yaml file used to initiate container through docker-compose:
+Let's take a look at the file structure starting from the .yaml file used to initiate containers through docker-compose:
 
 ```
 .
@@ -62,7 +62,7 @@ Let's take a look at the file structure starting from the .yaml file used to ini
     └── default.conf
 ```
 
-Initiate the containers with through the command:
+Initiate the containers by running the following command in the same directory where `compose.yaml` file lies:
 
 `docker-compose up --build -d --scale frontend=2`
 
