@@ -34,7 +34,7 @@ For setting up custom domain endpoint for the API Gateway, [this](https://wenheq
 
 ### Containerization of the previously VM-hosted 3-tier Architecture based App
 
-The earlier application setup isn't much different from the currently containerized setup of the same:
+The previous 'VM-hosted' application setup isn't much different from the currently containerized setup:
 
 1) The application would be served through multiple *gunicorn* processes waiting for requests in a .sock file.
 2) An nginx process would be listening at port 80 distributing traffic requests to the gunicorn processes through the .sock file, thereby accomplishing the 'load-balancing'.
@@ -70,7 +70,7 @@ This would both build the images and instantiate containers off of them and plac
 
 #### how container-to-container communication works:
 
-1) While frontend containers would be listening on their ports `5000`, the nginx container would be listening on its port `80` that is supposed to mapped to the same port of the host.
+1) While frontend containers would be listening on their ports `5000`, the nginx container would be listening on its port `80` that is supposed to be mapped to the same port of the host.
 
 2) This way, the same way requests would have been forwarded in the earlier setup, they would be forwarded by the nginx container to the frontend containers by resolution of the respective DNS Aliases of the latter.
 
