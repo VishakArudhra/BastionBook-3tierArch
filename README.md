@@ -6,7 +6,7 @@
 
 **A temporary note about the deploy branch**
 
-Since the commit pushed to attempt the containerized deployment of our application in the **main** branch, file structure has been changed significantly to affect the sucessful working of this branch.
+Since the commit pushed to attempt the containerized deployment of our application in the **main** branch, file structure has been changed significantly to affect the successful working of this branch.
 
 Therefore, until this incosistency is fixed, those with limited knowledge might not find it easy to work the **deploy** branch and execute the *ansible playbooks* . 
 
