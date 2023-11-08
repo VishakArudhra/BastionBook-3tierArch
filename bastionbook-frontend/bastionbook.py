@@ -13,7 +13,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!!!</p>"
+    return "<p>Hello, World!!</p>"
 
 #for passing inputs through extensions
 #the decorator argument and the function argument
@@ -26,7 +26,8 @@ def hello_name(name):
 def register():
 
     #if request is GET
-    url = 'https://api.vishakarudhra.com/dynamodbmanager'
+    # url = 'https://api.vishakarudhra.com/dynamodbmanager'
+    url = 'http://backend-endpoint/'
 
     get_all_data = {
     'operation': 'getall'
@@ -34,7 +35,7 @@ def register():
     
     response_data = requests.post(
         url,
-        data=json.dumps(get_all_data),
+        json=get_all_data,
         headers={'Accept': 'application/json'}
     )
     if request.method == 'POST':
@@ -66,13 +67,16 @@ def register():
                         }
                     }
                 }
+
                 response = requests.post(
                     url, 
-                    data=json.dumps(new_entry)
+                    json=new_entry,
+                    headers={'Accept': 'application/json'}
                     )
-                assert response.content.decode() == 'null'
+                # print(response.json())
+                assert response.json()["ResponseMetadata"]["HTTPStatusCode"] == 200
                 flash('entry successful')
-                return render_template('register.html', bad_entry=False, instance_data=response_data.json())
+                return redirect(url_for('register'))
             except:
                 flash('entry unsuccessful, internal error.')
                 return render_template('register.html', bad_entry=True, instance_data=response_data.json())

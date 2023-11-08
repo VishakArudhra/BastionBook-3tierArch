@@ -30,4 +30,4 @@ RUN pip install -r requirements.txt
 
 # define the port number the container should expose
 
-CMD ["python", "bastionbook.py"]
+CMD ["python3", "bastionbook.py"]
